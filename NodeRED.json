@@ -1,0 +1,620 @@
+[
+    {
+        "id": "b561bb609063ad47",
+        "type": "tab",
+        "label": "Outputs",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "84c89bcbf4c16863",
+        "type": "firebase.on",
+        "z": "b561bb609063ad47",
+        "name": "",
+        "firebaseconfig": "",
+        "childpath": "parking_system/available_slots",
+        "atStart": true,
+        "eventType": "value",
+        "queries": [],
+        "x": 400,
+        "y": 420,
+        "wires": [
+            [
+                "c87aaf2980a47a61",
+                "e25be5014b123cb5"
+            ]
+        ]
+    },
+    {
+        "id": "c87aaf2980a47a61",
+        "type": "ui_gauge",
+        "z": "b561bb609063ad47",
+        "name": "Slots Available",
+        "group": "4d7db594e555f37b",
+        "order": 1,
+        "width": 8,
+        "height": 5,
+        "gtype": "donut",
+        "title": "",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "2",
+        "colors": [
+            "#097479",
+            "#097479",
+            "#097479"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 940,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "52ba228a31f030d1",
+        "type": "firebase.on",
+        "z": "b561bb609063ad47",
+        "name": "",
+        "firebaseconfig": "",
+        "childpath": "parking_system/total_cars_entered",
+        "atStart": true,
+        "eventType": "value",
+        "queries": [],
+        "x": 410,
+        "y": 480,
+        "wires": [
+            [
+                "91ea2f5aea8fca27"
+            ]
+        ]
+    },
+    {
+        "id": "bdba942e38e87d67",
+        "type": "firebase.on",
+        "z": "b561bb609063ad47",
+        "name": "",
+        "firebaseconfig": "",
+        "childpath": "parking_system/total_cars_exited",
+        "atStart": true,
+        "eventType": "value",
+        "queries": [],
+        "x": 410,
+        "y": 560,
+        "wires": [
+            [
+                "fd59d69833f1ef5a"
+            ]
+        ]
+    },
+    {
+        "id": "fd59d69833f1ef5a",
+        "type": "ui_text",
+        "z": "b561bb609063ad47",
+        "group": "a5d287fe1bdd57bd",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "Total Cars Exited",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "style": true,
+        "font": "Arial,Arial,Helvetica,sans-serif",
+        "fontSize": 16,
+        "color": "#ffffff",
+        "x": 950,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "91ea2f5aea8fca27",
+        "type": "ui_text",
+        "z": "b561bb609063ad47",
+        "group": "45be5fc46b90fdea",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "Total Cars Entered",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "style": true,
+        "font": "Arial,Arial,Helvetica,sans-serif",
+        "fontSize": 16,
+        "color": "#ffffff",
+        "x": 950,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "8bf756c71330f855",
+        "type": "firebase.on",
+        "z": "b561bb609063ad47",
+        "name": "",
+        "firebaseconfig": "",
+        "childpath": "/parking_system/IR1_status",
+        "atStart": true,
+        "eventType": "value",
+        "queries": [],
+        "x": 370,
+        "y": 640,
+        "wires": [
+            [
+                "16e245fb25fe19d0"
+            ]
+        ]
+    },
+    {
+        "id": "52974373f8f07c9e",
+        "type": "firebase.on",
+        "z": "b561bb609063ad47",
+        "name": "",
+        "firebaseconfig": "",
+        "childpath": "/parking_system/IR2_status",
+        "atStart": true,
+        "eventType": "value",
+        "queries": [],
+        "x": 370,
+        "y": 720,
+        "wires": [
+            [
+                "10f51d9bf79df574"
+            ]
+        ]
+    },
+    {
+        "id": "16e245fb25fe19d0",
+        "type": "function",
+        "z": "b561bb609063ad47",
+        "name": "function 1",
+        "func": "// Convert the boolean value to a string\nlet booleanString = msg.payload.toString();\n\n// Check if the string is \"true\" or \"false\"\nif (booleanString === \"true\") {\n    msg.payload = \"Occupied\";\n} else if (booleanString === \"false\") {\n    msg.payload = \"Not Occupied\";\n}\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 860,
+        "y": 640,
+        "wires": [
+            [
+                "3e134103a601a88d"
+            ]
+        ]
+    },
+    {
+        "id": "10f51d9bf79df574",
+        "type": "function",
+        "z": "b561bb609063ad47",
+        "name": "function 2",
+        "func": "// Convert the boolean value to a string\nlet booleanString = msg.payload.toString();\n\n// Check if the string is \"true\" or \"false\"\nif (booleanString === \"true\") {\n    msg.payload = \"Occupied\";\n} else if (booleanString === \"false\") {\n    msg.payload = \"Not Occupied\";\n}\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 860,
+        "y": 720,
+        "wires": [
+            [
+                "a0b21bddae426d93"
+            ]
+        ]
+    },
+    {
+        "id": "a0b21bddae426d93",
+        "type": "ui_template",
+        "z": "b561bb609063ad47",
+        "group": "ecb34e0df2833653",
+        "name": "Slot 2 Occupancy Status",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "format": "<div style=\"display: flex; justify-content: center; align-items: center; height: 100%;\">\n    <!-- Conditionally apply 'circle' class if Occupied/Not Occupied -->\n    <span ng-class=\"{'circle': msg.payload === 'Occupied' || msg.payload === 'Not Occupied'}\"\n          ng-style=\"{'border-color': msg.payload === 'Occupied' ? 'red' : 'green'}\"\n          style=\"display: inline-block; padding: 10px; font-size: 16px;\">\n        {{ msg.payload }}\n    </span>\n</div>\n\n<style>\n    /* Define the circle class */\n    .circle {\n        border: 2px solid;\n        border-radius: 50%;\n        text-align: center;\n        padding: 10px;\n    }\n</style>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1090,
+        "y": 720,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3e134103a601a88d",
+        "type": "ui_template",
+        "z": "b561bb609063ad47",
+        "group": "011a207f5fdb75d4",
+        "name": "Slot 1 Occupancy Status",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "format": "<div style=\"display: flex; justify-content: center; align-items: center; height: 100%;\">\n    <!-- Conditionally apply 'circle' class if Occupied/Not Occupied -->\n    <span ng-class=\"{'circle': msg.payload === 'Occupied' || msg.payload === 'Not Occupied'}\"\n          ng-style=\"{'border-color': msg.payload === 'Occupied' ? 'red' : 'green'}\"\n          style=\"display: inline-block; padding: 10px; font-size: 16px;\">\n        {{ msg.payload }}\n    </span>\n</div>\n\n<style>\n    /* Define the circle class */\n    .circle {\n        border: 2px solid;\n        border-radius: 50%;\n        text-align: center;\n        padding: 10px;\n    }\n</style>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1090,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e25be5014b123cb5",
+        "type": "ui_chart",
+        "z": "b561bb609063ad47",
+        "name": "Slots Available",
+        "group": "c25d491db6959b48",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "2",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ffee38",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 940,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1d6558423cd9d207",
+        "type": "ui_template",
+        "z": "b561bb609063ad47",
+        "group": "2fd77c53c7b71bc3",
+        "name": "Entrance",
+        "order": 1,
+        "width": 8,
+        "height": 5,
+        "format": "<div style=\"background-color: #f0f0f0; color: #333; paddding: 20px; border-radius: 10px;\">\n    <img src=\"https://firebasestorage.googleapis.com/v0/b/smart-parking-system-b07b5.appspot.com/o/images%2Fstatic_entrance_image.jpg?alt=media\" alt=\"My Image\" style=\"max-width:100%; height: 100%; display: block;\">\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 140,
+        "y": 1020,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fff8f016b604e638",
+        "type": "ui_template",
+        "z": "b561bb609063ad47",
+        "group": "f625938bad113993",
+        "name": "Exit",
+        "order": 1,
+        "width": 8,
+        "height": 5,
+        "format": "<div>\n    <img src=\"https://firebasestorage.googleapis.com/v0/b/smart-parking-system-b07b5.appspot.com/o/images%2Fstatic_exit_image.jpg?alt=media\" alt=\"My Image\" style=\"max-width:100%; height: 100%; display: block;\">\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 130,
+        "y": 1080,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "496f258f94d82341",
+        "type": "firebase modify",
+        "z": "b561bb609063ad47",
+        "name": "",
+        "firebaseconfig": "",
+        "childpath": "parking_system/entrance_servo_motor_angle",
+        "method": "set",
+        "value": "msg.payload",
+        "priority": "msg.priority",
+        "x": 670,
+        "y": 1200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "79779f7e27fd8c8b",
+        "type": "ui_button",
+        "z": "b561bb609063ad47",
+        "name": "",
+        "group": "b32b5a013af579da",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Open Entrance",
+        "tooltip": "",
+        "color": "green",
+        "bgcolor": "white",
+        "className": "",
+        "icon": "settings",
+        "payload": "90",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 120,
+        "y": 1160,
+        "wires": [
+            [
+                "496f258f94d82341"
+            ]
+        ]
+    },
+    {
+        "id": "b17c1cc36a91b2d4",
+        "type": "ui_button",
+        "z": "b561bb609063ad47",
+        "name": "",
+        "group": "b712d5a382b64716",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Close Entrance",
+        "tooltip": "",
+        "color": "red",
+        "bgcolor": "white",
+        "className": "",
+        "icon": "close",
+        "payload": "0",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 120,
+        "y": 1220,
+        "wires": [
+            [
+                "496f258f94d82341"
+            ]
+        ]
+    },
+    {
+        "id": "2827d9515dd2ece1",
+        "type": "ui_button",
+        "z": "b561bb609063ad47",
+        "name": "",
+        "group": "b32b5a013af579da",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Open Exit",
+        "tooltip": "",
+        "color": "green",
+        "bgcolor": "white",
+        "className": "",
+        "icon": "settings",
+        "payload": "90",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 140,
+        "y": 1280,
+        "wires": [
+            [
+                "2bd0af635c65c337"
+            ]
+        ]
+    },
+    {
+        "id": "b83dc04abf0490d9",
+        "type": "ui_button",
+        "z": "b561bb609063ad47",
+        "name": "",
+        "group": "b712d5a382b64716",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Close Exit",
+        "tooltip": "",
+        "color": "red",
+        "bgcolor": "white",
+        "className": "",
+        "icon": "close",
+        "payload": "0",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 140,
+        "y": 1340,
+        "wires": [
+            [
+                "2bd0af635c65c337"
+            ]
+        ]
+    },
+    {
+        "id": "2bd0af635c65c337",
+        "type": "firebase modify",
+        "z": "b561bb609063ad47",
+        "name": "",
+        "firebaseconfig": "",
+        "childpath": "parking_system/exit_servo_motor_angle",
+        "method": "set",
+        "value": "msg.payload",
+        "priority": "msg.priority",
+        "x": 650,
+        "y": 1300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4d7db594e555f37b",
+        "type": "ui_group",
+        "name": "Slots Available",
+        "tab": "3ded291dab6fb9c2",
+        "order": 6,
+        "disp": true,
+        "width": 8,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "a5d287fe1bdd57bd",
+        "type": "ui_group",
+        "name": "Total Cars Exited",
+        "tab": "3ded291dab6fb9c2",
+        "order": 2,
+        "disp": true,
+        "width": 8,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "45be5fc46b90fdea",
+        "type": "ui_group",
+        "name": "Total Cars Entered",
+        "tab": "3ded291dab6fb9c2",
+        "order": 1,
+        "disp": true,
+        "width": 8,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "ecb34e0df2833653",
+        "type": "ui_group",
+        "name": "Slot 2",
+        "tab": "3ded291dab6fb9c2",
+        "order": 4,
+        "disp": true,
+        "width": 8,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "011a207f5fdb75d4",
+        "type": "ui_group",
+        "name": "Slot 1",
+        "tab": "3ded291dab6fb9c2",
+        "order": 3,
+        "disp": true,
+        "width": 8,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "c25d491db6959b48",
+        "type": "ui_group",
+        "name": "Line Chart",
+        "tab": "3ded291dab6fb9c2",
+        "order": 5,
+        "disp": true,
+        "width": 8,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "2fd77c53c7b71bc3",
+        "type": "ui_group",
+        "name": "Entrance Surveillance",
+        "tab": "ead6fc0764fd492d",
+        "order": 1,
+        "disp": true,
+        "width": 8,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "f625938bad113993",
+        "type": "ui_group",
+        "name": "Exit Surveillance",
+        "tab": "ead6fc0764fd492d",
+        "order": 2,
+        "disp": true,
+        "width": 8,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "b32b5a013af579da",
+        "type": "ui_group",
+        "name": "Contol Open",
+        "tab": "ddf10d2184fe8bbe",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": true,
+        "className": ""
+    },
+    {
+        "id": "b712d5a382b64716",
+        "type": "ui_group",
+        "name": "Control Close",
+        "tab": "ddf10d2184fe8bbe",
+        "order": 8,
+        "disp": true,
+        "width": "6",
+        "collapse": true,
+        "className": ""
+    },
+    {
+        "id": "3ded291dab6fb9c2",
+        "type": "ui_tab",
+        "name": "Real Time Monitoring",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "ead6fc0764fd492d",
+        "type": "ui_tab",
+        "name": "Surveillance",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "ddf10d2184fe8bbe",
+        "type": "ui_tab",
+        "name": "Control Panel",
+        "icon": "dashboard",
+        "order": 3,
+        "disabled": false,
+        "hidden": false
+    }
+]
