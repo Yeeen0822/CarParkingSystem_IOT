@@ -18,7 +18,7 @@ Features
 ✅ Indicator LEDs – Green for available slots, Red for occupied slots.
 
 
-Hardware Components
+## Hardware Components
 
 Raspberry Pi 4 – Main controller for data processing.
 
@@ -30,7 +30,7 @@ LEDs – Indicate parking slot availability.
 
 Power Supply – 5V power adapter for Raspberry Pi and ESP.
 
-Software & Technologies Used
+## Software & Technologies Used
 
 Programming Languages: C++
 
