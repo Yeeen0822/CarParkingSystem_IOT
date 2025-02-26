@@ -1,10 +1,12 @@
 IoT-Based Smart Car Parking System
+
 Project Overview
 
 This project is an IoT-based smart parking system that monitors and manages parking slot availability using Raspberry Pi 4, ESP microcontrollers, and Node-RED for the user 
 interface. The system detects vehicle presence using IR sensors and updates real-time slot availability on a dashboard, optimizing parking efficiency.
 
 Features
+
 ✅ Real-time Parking Slot Detection – Uses IR sensors connected to ESP to detect available and occupied slots.
 
 ✅ Live Monitoring Dashboard – Displays parking status using Node-RED UI.
